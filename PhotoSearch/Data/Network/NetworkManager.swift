@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Networkable {
-    func get(apiRequest:ApiRequestType) async throws -> Data
+    func get(apiRequest: ApiRequestType) async throws -> Data
 }
 
 class NetworkManager: Networkable {
@@ -20,7 +20,7 @@ class NetworkManager: Networkable {
         do {
             let (data, _)  = try await URLSession.shared.data(for: request)
             return data
-        }catch {
+        } catch {
             throw APIError.invalidData
         }
     }

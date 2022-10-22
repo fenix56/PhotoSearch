@@ -12,7 +12,7 @@ class MockImageNetworkManager: Networkable {
     func get(apiRequest: ApiRequestType) async throws -> Data {
         if apiRequest.baseUrl == "valid" {
            return Data()
-        }else {
+        } else {
             throw APIError.invalidData
         }
     }

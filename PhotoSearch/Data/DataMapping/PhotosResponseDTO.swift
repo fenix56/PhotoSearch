@@ -18,9 +18,9 @@ struct Hit: Decodable {
     let pageURL: String
     let previewURL: String
     let largeImageURL: String
-
+    
     enum CodingKeys: String, CodingKey {
-        case id, pageURL,  previewURL,  largeImageURL
+        case id, pageURL, previewURL, largeImageURL
     }
 }
 
@@ -28,6 +28,6 @@ struct Hit: Decodable {
 
 extension PhotosResponseDTO {
     func toDomain() -> [PhotoRecord] {
-        return hits.map{ .init(id:$0.id , previewURL: $0.previewURL )}
+        return hits.map { .init(id: $0.id, previewURL: $0.previewURL) }
     }
 }

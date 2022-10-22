@@ -4,12 +4,12 @@
 //
 //  Created by Przemek on 04/07/22.
 //
-
+// swiftlint:disable force_cast
 import XCTest
 @testable import PhotoSearch
 
 class SearchRepositoryTests: XCTestCase {
-
+    
     var searchRespository: SearchRepository!
     
     override func setUp() {
@@ -19,56 +19,53 @@ class SearchRepositoryTests: XCTestCase {
     }
     
     // Valid Response
-    func testGetImages_ForValidKeyword() async{
-    
-       let photoRecords =  try? await searchRespository.getImages(for:"valid_keyword_search_response")
+    func testGetImages_ForValidKeyword() async {
+        
+        let photoRecords =  try? await searchRespository.getImages(for: "valid_keyword_search_response")
         
         XCTAssertEqual(photoRecords?.count, 20)
-
+        
         XCTAssertEqual(photoRecords!.first!.previewURL, "https://cdn.pixabay.com/photo/2017/06/20/22/14/man-2425121_150.jpg")
         
     }
     
     // Cached Response
-    func testGetImages_fromCachedResponse() async{
-    
+    func testGetImages_fromCachedResponse() async {
+        
         // GIVEN
-       let _ =  try? await searchRespository.getImages(for:"valid_keyword_search_response")
+        _ = try? await searchRespository.getImages(for: "valid_keyword_search_response")
         
         // When
         
-        let photoRecords =  try? await searchRespository.getImages(for:"valid_keyword_search_response")
+        let photoRecords =  try? await searchRespository.getImages(for: "valid_keyword_search_response")
         
         XCTAssertEqual(photoRecords?.count, 20)
-
+        
         XCTAssertEqual(photoRecords!.first!.previewURL, "https://cdn.pixabay.com/photo/2017/06/20/22/14/man-2425121_150.jpg")
         
     }
     
-    
     // Empty Response
-    func testGetImages_ForEmptyResonse() async{
+    func testGetImages_ForEmptyResonse() async {
         
-        do  {
-            _ =  try await searchRespository.getImages(for:"empty_search_response")
+        do {
+            _ =  try await searchRespository.getImages(for: "empty_search_response")
             
-        }catch {
+        } catch {
             XCTAssertEqual(error as! APIError, APIError.emptyRecords)
         }
         
     }
     
     // InValid Response
-    func testGetImages_ForInvalidResonse() async{
+    func testGetImages_ForInvalidResonse() async {
         
-        do  {
-            _ =  try await searchRespository.getImages(for:"invalid_search_response")
+        do {
+            _ =  try await searchRespository.getImages(for: "invalid_search_response")
             
-        }catch {
+        } catch {
             XCTAssertEqual(error as! APIError, APIError.jsonParsingFailed)
         }
-        
     }
-    
-    
 }
+// swiftlint:enable force_cast

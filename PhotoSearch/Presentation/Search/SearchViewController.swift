@@ -15,13 +15,13 @@ final class SearchViewController: UIViewController, Alertable {
     
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    var viewModel:SearchViewModel?
+    var viewModel: SearchViewModel?
     
     private var bindings = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = NSLocalizedString("search", comment:"")
+        self.navigationItem.title = NSLocalizedString("search", comment: "")
         searchBar.delegate = self
         setupBinding()
     }
@@ -29,7 +29,7 @@ final class SearchViewController: UIViewController, Alertable {
 
 // MARK: - Search Bar Delegate
 
-extension SearchViewController : UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         search(for: searchBar.text)
     }
@@ -53,9 +53,9 @@ extension SearchViewController {
 
 extension SearchViewController {
     
-    private func search(for keyword:String?) {
+    private func search(for keyword: String?) {
         Task {
-            await viewModel?.getGalleryImages(keyword:keyword )
+            await viewModel?.getGalleryImages(keyword: keyword)
         }
     }
     
@@ -68,11 +68,11 @@ extension SearchViewController {
             case .showPhotosView:
                 self?.hideActivity()
                 self?.navigateToGalleryView()
-            case .showError( let message):
+            case .showError(let message):
                 self?.hideActivity()
                 // Notifying assistive userd for screen change when alert appears
-                UIAccessibility.post(notification: .screenChanged, argument:nil)
-                self?.showAlert(message:message)
+                UIAccessibility.post(notification: .screenChanged, argument: nil)
+                self?.showAlert(message: message)
             case .none:
                 self?.hideActivity()
             }

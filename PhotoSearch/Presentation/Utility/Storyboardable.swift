@@ -18,13 +18,13 @@ extension Storyboardable where Self: UIViewController {
     }
 
     static func storyboardViewController() -> Self {
-        let storyboard = UIStoryboard(name:"Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-        guard let vc = storyboard.instantiateViewController(withIdentifier: viewControllerName) as? Self else {
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerName) as? Self else {
             fatalError("Could not instantiate initial storyboard with name: \(viewControllerName)")
         }
 
-        return vc
+        return viewController
     }
 }
 

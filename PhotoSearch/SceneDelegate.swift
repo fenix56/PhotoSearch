@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // tell the coordinator to take over control
         coordinator?.start()
 
-        window = UIWindow(windowScene: scene as! UIWindowScene)
+        window = UIWindow(windowScene: scene as! UIWindowScene) // swiftlint:disable:this force_cast
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }
@@ -53,7 +53,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-

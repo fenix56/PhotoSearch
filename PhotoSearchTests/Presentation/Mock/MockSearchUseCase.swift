@@ -10,12 +10,12 @@ import Foundation
 
 class MokcSearchUseCase: SearchUseCase {
     
-    let photoRecords = [PhotoRecord(id:1, previewURL: "testUrl")]
+    let photoRecords = [PhotoRecord(id: 1, previewURL: "testUrl")]
     
     func execute(for keyword: String) async throws -> [PhotoRecord] {
         if keyword == "empty_search_response" {
             throw  APIError.emptyRecords
-        }else if keyword == "invalid_search_response" {
+        } else if keyword == "invalid_search_response" {
             throw APIError.jsonParsingFailed
         }
         return photoRecords

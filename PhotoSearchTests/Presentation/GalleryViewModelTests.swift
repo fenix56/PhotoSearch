@@ -70,8 +70,8 @@ class GalleryViewModelTests: XCTestCase {
 //    }
 //
 //
-    private func getFakeImageRecords()-> [PhotoRecord] {
-        return [PhotoRecord(id: 1, previewURL:"valid")]
+    private func getFakeImageRecords() -> [PhotoRecord] {
+        return [PhotoRecord(id: 1, previewURL: "valid")]
     }
 
 }

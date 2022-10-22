@@ -23,7 +23,7 @@ extension DefualtGalleryUseCase: GalleryUseCase {
     func execute(for url: String) async throws -> Data {
         do {
             return  try await galleryRepository.getImages(for: url)
-        }catch {
+        } catch {
             throw error
         }
     }

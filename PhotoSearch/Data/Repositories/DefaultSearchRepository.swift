@@ -9,19 +9,19 @@ import Foundation
 
 final class DefaultSearchRepository {
     
-    private var cachedResult: [String : [PhotoRecord]] = [:]
+    private var cachedResult: [String: [PhotoRecord]] = [:]
     
     private let networkManager: Networkable
     
-    init(networkManager:Networkable) {
+    init(networkManager: Networkable) {
         self.networkManager = networkManager
     }
         
-    private func getCachedResponse(for keyword:String)-> [PhotoRecord]? {
+    private func getCachedResponse(for keyword: String) -> [PhotoRecord]? {
         return cachedResult[keyword]
     }
     
-    private func getDecodedResopnse(from data: Data)-> PhotosResponseDTO? {
+    private func getDecodedResopnse(from data: Data) -> PhotosResponseDTO? {
         guard let photosResponseDTO = try? JSONDecoder().decode(PhotosResponseDTO.self, from: data) else {
             return nil
         }
@@ -37,7 +37,7 @@ extension DefaultSearchRepository: SearchRepository {
             return cachedRecords
         }
         
-        let  apiRequest = ApiRequest(baseUrl: EndPoint.baseUrl, path:"", params: ["q": keyWord])
+        let  apiRequest = ApiRequest(baseUrl: EndPoint.baseUrl, path: "", params: ["q": keyWord])
         
         guard let data = try? await  self.networkManager.get(apiRequest: apiRequest) else {
             throw APIError.invalidData

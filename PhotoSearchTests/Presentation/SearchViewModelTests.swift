@@ -10,7 +10,7 @@ import XCTest
 
 class SearchViewModelTests: XCTestCase {
 
-    var viewModel:SearchViewModel!
+    var viewModel: SearchViewModel!
     
     override func setUpWithError() throws {
        
@@ -18,7 +18,7 @@ class SearchViewModelTests: XCTestCase {
         
         let searchUseCase = MokcSearchUseCase()
         
-        viewModel = SearchViewModel(searchUseCase:searchUseCase , coordinator: coordinator)
+        viewModel = SearchViewModel(searchUseCase: searchUseCase, coordinator: coordinator)
     }
 
     override func tearDownWithError() throws {
@@ -28,7 +28,7 @@ class SearchViewModelTests: XCTestCase {
     // Valid keyword search
     func testSearch_MultipleTimesWithSameKeyWord() async {
     
-        //GIVEN : Valid Search
+        // GIVEN : Valid Search
         let keyword = "valid_keyword_search_response"
         
         // When
@@ -44,7 +44,7 @@ class SearchViewModelTests: XCTestCase {
     // InValid keyword search
     func testSearch_InvalidKeyWord() async {
     
-        //GIVEN : invalid Search keyword
+        // GIVEN : invalid Search keyword
         let keyword = "empty_search_response"
         
         // When
@@ -58,7 +58,7 @@ class SearchViewModelTests: XCTestCase {
     // When response is not as per expected Models
     func testSearch_WhenResponseIsNotValid() async {
 
-        //GIVEN : invalid search response with any valid keyword
+        // GIVEN : invalid search response with any valid keyword
         let keyword = "invalid_search_response"
         
         // When
@@ -71,7 +71,7 @@ class SearchViewModelTests: XCTestCase {
     // Empty Keyword Testing
     func testSearch_WhenKeyWordIsEmpty() async {
 
-        //GIVEN : Empty Keyword
+        // GIVEN : Empty Keyword
         let keyword = ""
         
         // When
@@ -84,7 +84,7 @@ class SearchViewModelTests: XCTestCase {
     // Nil Keyword Testing
     func testSearch_WhenKeyWordIsNil() async {
 
-        //GIVEN : Nil Keyword
+        // GIVEN : Nil Keyword
         
         // When
         await viewModel.getGalleryImages(keyword: nil)
@@ -96,7 +96,7 @@ class SearchViewModelTests: XCTestCase {
     // Valid keyword search
     func testSearch_WhenKeyWordIsValid() async {
         
-        //GIVEN : Valid Search
+        // GIVEN : Valid Search
         let keyword = "valid_keyword_search_response"
         
         // When

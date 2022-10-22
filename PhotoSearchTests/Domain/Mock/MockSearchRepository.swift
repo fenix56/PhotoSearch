@@ -13,6 +13,6 @@ class MockSearchRepository: SearchRepository {
         if keyWord == "invalid" {
             throw APIError.invalidSearch
         }
-        return [PhotoRecord(id:1, previewURL: "testUrl")]
+        return [PhotoRecord(id: 1, previewURL: "testUrl")]
     }
 }

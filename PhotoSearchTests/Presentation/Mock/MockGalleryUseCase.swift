@@ -8,7 +8,6 @@
 import Foundation
 @testable import PhotoSearch
 
-
 class MockGalleryUseCase: GalleryUseCase {
     func execute(for url: String) async throws -> Data {
         

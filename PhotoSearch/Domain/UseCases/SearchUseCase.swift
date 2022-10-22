@@ -21,7 +21,7 @@ final class DefaultSearchUseCase: SearchUseCase {
     func execute(for keyword: String) async throws -> [PhotoRecord] {
         do {
             return try await searchRepository.getImages(for: keyword)
-        }catch {
+        } catch {
           throw error
         }
     }

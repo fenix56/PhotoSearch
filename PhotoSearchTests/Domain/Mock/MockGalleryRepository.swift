@@ -8,8 +8,7 @@
 import Foundation
 @testable import PhotoSearch
 
-
-class MockGalleryRepository: GalleryRepository{
+class MockGalleryRepository: GalleryRepository {
     func getImages(for url: String) async throws -> Data {
         if url == "InvalidUrl" {
             throw APIError.invalidData

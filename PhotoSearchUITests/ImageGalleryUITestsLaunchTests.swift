@@ -16,6 +16,4 @@ class ImageGalleryUITestsLaunchTests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
-
-    
 }

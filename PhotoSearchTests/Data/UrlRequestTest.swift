@@ -14,7 +14,7 @@ class UrlRequestTest: XCTestCase {
     func testRequest_whenUrlIsCorrect() {
         
         // GIVEN
-        let apiRequest = ApiRequest(baseUrl: EndPoint.baseUrl, path:"", params:["q":"test"])
+        let apiRequest = ApiRequest(baseUrl: EndPoint.baseUrl, path: "", params: ["q": "test"])
         // When
         let requeast = URLRequest.getURLRequest(for: apiRequest)
         // Then
@@ -26,7 +26,7 @@ class UrlRequestTest: XCTestCase {
     func testRequest_whenUrlIsInCorrect() {
         
         // GIVEN
-        let apiRequest = ApiRequest(baseUrl: "", path:"", params:["q":"test"])
+        let apiRequest = ApiRequest(baseUrl: "", path: "", params: ["q": "test"])
         // When
         let requeast = URLRequest.getURLRequest(for: apiRequest)
         // Then

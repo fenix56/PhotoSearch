@@ -12,6 +12,6 @@ protocol GalleryRepository {
 }
 
 protocol ImageCacher {
-    func getImage(url:String)-> Data?
-    func saveImage(url:String, data:Data)
+    func getImage(url: String) -> Data?
+    func saveImage(url: String, data: Data)
 }

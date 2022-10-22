@@ -30,7 +30,7 @@ final class SearchViewModel: SearchViewModelOutput {
 
     @Published  var state: SearchViewStates = .none
     
-    private var cancellables:Set<AnyCancellable> = Set()
+    private var cancellables: Set<AnyCancellable> = Set()
     
     init(searchUseCase: SearchUseCase,
          coordinator: Coordinator) {
@@ -47,7 +47,7 @@ extension SearchViewModel: SearchViewModelAction {
 
 extension SearchViewModel: SearchViewModelInput {
     func getGalleryImages(keyword: String?) async {
-        guard let keyword = keyword, keyword.count > 0 else {
+        guard let keyword = keyword, !keyword.isEmpty else {
             self.state = .showError(APIError.invalidSearch.localizedDescription)
             return
         }
@@ -57,8 +57,7 @@ extension SearchViewModel: SearchViewModelInput {
             
             state = .showPhotosView
         } catch {
-            state = .showError((error as! APIError).localizedDescription)
+            state = .showError((error as! APIError).localizedDescription) // swiftlint:disable:this force_cast
         }
     }
 }
-

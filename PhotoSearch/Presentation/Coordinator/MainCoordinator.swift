@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol Coordinator: AnyObject {
-    func navigatToGallery(keyword:String, imageRecords: [PhotoRecord]) 
+    func navigatToGallery(keyword: String, imageRecords: [PhotoRecord])
 }
 
 class MainCoordinator: Coordinator {
@@ -34,7 +34,7 @@ class MainCoordinator: Coordinator {
         
     }
     
-    func navigatToGallery(keyword:String, imageRecords: [PhotoRecord]) {
+    func navigatToGallery(keyword: String, imageRecords: [PhotoRecord]) {
                 
         let galleryViewController = GalleryViewController.storyboardViewController()
         

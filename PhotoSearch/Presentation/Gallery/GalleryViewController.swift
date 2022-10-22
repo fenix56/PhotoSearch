@@ -30,8 +30,8 @@ final class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = NSLocalizedString("gallery", comment:"")
-
+        self.navigationItem.title = NSLocalizedString("gallery", comment: "")
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -45,17 +45,17 @@ extension GalleryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as? GalleryCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? GalleryCollectionViewCell else {
             return UICollectionViewCell()
         }
         
         Task {
-            if let data =    await galleryViewModel?.downLoadImage(for:indexPath.row) {
+            if let data =    await galleryViewModel?.downLoadImage(for: indexPath.row) {
                 cell.galleryImageView.image = UIImage(data: data)
                 cell.galleryImageView.isAccessibilityElement = true
                 cell.galleryImageView.accessibilityLabel = " \(String(describing: galleryViewModel?.getKeyWord()))"
-            }else {
-                cell.galleryImageView.image = UIImage(named:"defaultImage")
+            } else {
+                cell.galleryImageView.image = UIImage(named: "defaultImage")
             }
             
         }
@@ -73,6 +73,3 @@ extension GalleryViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: cellWidth)
     }
 }
-
-
-

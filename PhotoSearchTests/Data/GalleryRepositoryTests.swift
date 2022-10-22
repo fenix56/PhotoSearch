@@ -9,15 +9,15 @@ import XCTest
 @testable import PhotoSearch
 
 class GalleryRepositoryTests: XCTestCase {
-
+    
     var galleryRepository: GalleryRepository!
     override func setUp() {
         galleryRepository = DefaultGalleryRepository(networkManager: MockImageNetworkManager())
     }
-
+    
     // Valid Image URL to donwload image
     func testImageForValidUrl() async {
-       let image = try? await galleryRepository.getImages(for:"valid")
+        let image = try? await galleryRepository.getImages(for: "valid")
         
         XCTAssertNotNil(image)
     }
@@ -25,10 +25,10 @@ class GalleryRepositoryTests: XCTestCase {
     // Invalid Image URL to donwload image
     func testImageForInValidUrl() async {
         do {
-            _ = try await galleryRepository.getImages(for:"")
-
-        }catch {
-            XCTAssertEqual(error as! APIError, APIError.invalidData)
+            _ = try await galleryRepository.getImages(for: "")
+            
+        } catch {
+            XCTAssertEqual(error as! APIError, APIError.invalidData) // swiftlint:disable:this force_cast
         }
     }
 }
